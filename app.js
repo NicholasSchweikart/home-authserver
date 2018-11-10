@@ -10,7 +10,7 @@ const express = require("express"),
 const indexRouter = require('./routes/index');
 
 const mongoose = require('mongoose');
-const server = '192.168.0.127:27017';
+const server = '127.0.0.1:27017';
 const database = 'Home';
 
 mongoose.connect(`mongodb://${server}/${database}`)
