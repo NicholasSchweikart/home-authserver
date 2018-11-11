@@ -32,7 +32,7 @@ router.all('/*', (req, res, next) => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send("index");
+  res.status(200).send("");
 });
 
 module.exports = router;
