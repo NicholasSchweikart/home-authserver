@@ -46,6 +46,7 @@ const User = mongoose.model('Users');
  * }]
  */
 router.post('/', (req, res) => {
+
   console.log(req.body);
   User.findOne({username:req.body.username, password:req.body.password})
     .lean()
@@ -54,11 +55,12 @@ router.post('/', (req, res) => {
         console.log(`user:${usr}`);
 
         // Create and send token
-        jwt.sign(usr,'#$%9095854Hg22erTuxxVVI058938?',{expiresIn:60*60*24}, (err, token)=>{
+        jwt.sign(usr,'#$%9095854Hg22erTuxxVVI058938?',{expiresIn:'7d'}, (err, token)=>{
           if(err)
             res.status(500).json({error: err});
           else
-            res.json({token:token});
+            res.cookie('token', token,{maxAge: 86400000, signed: true})
+              .json({token:token});
         });
       }
       else

@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 
 const mongoose = require('mongoose');
 const server = '127.0.0.1:27017';
+//const server = '192.168.0.127:27017';
 const database = 'Home';
 
 mongoose.connect(`mongodb://${server}/${database}`)
@@ -27,21 +28,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('#$%9095854Hg22erTuxxVVI058938?'));
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use(session(
-  {
-    secret: '#$%9095854Hg22erTuxxVVI058938?',
-    saveUninitialized: true,
-    resave: true,
-    rolling: true,
-    cookie: {
-      path: "/",
-      maxAge: 2 * 1800000,  // 60 min max cookie life
-      httpOnly: true,       // Hide from JavaScript
-      // secure: true       //TODO Require an HTTPS connection by uncommenting here
-    },
-    name: "id", // Change cookie name to obscure inner workings
-  },
-));
+// app.use(session(
+//   {
+//     secret: '#$%9095854Hg22erTuxxVVI058938?',
+//     saveUninitialized: true,
+//     resave: true,
+//     rolling: true,
+//     cookie: {
+//       path: "/",
+//       maxAge: 2 * 1800000,  // 60 min max cookie life
+//       httpOnly: true,       // Hide from JavaScript
+//       // secure: true       //TODO Require an HTTPS connection by uncommenting here
+//     },
+//     name: "id", // Change cookie name to obscure inner workings
+//   },
+// ));
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
